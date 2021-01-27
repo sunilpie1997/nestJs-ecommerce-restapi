@@ -1,0 +1,50 @@
+   --- check dependencies ---
+
+   ----make shop not editable once admin sets 'can_sell =true'---
+
+   ---before issuing token,set 'last_update' property--------
+
+   ---implement caching-----
+
+   ---implement pagination-------
+
+   ---implement validation on all api endpoints.ex:registerRetailer,...
+
+   --optimize queryies,ex:find-------------------
+
+   ----set limit of products in category----
+    set timezone for this app.
+
+    ****username should be lower case in django and this one********.
+
+    user should be able to change his username,email
+
+    ******if user has changed his username on django side
+    and a new user created with same username can have unauthorized access******* 
+
+    Implement loose coupling
+
+    price can be e 50/kg
+
+    properties of product can vary ex:size for clothes,for sweets,etc
+
+    likes,views in different collection
+
+    Type.forFeature()... in case of mongoose and mongodb
+
+    hide mongdb url..it contains password
+
+
+    ........create DTO for all........check validation link in nestJs
+
+    NOTE:mongoose connection is not injected -> check whether required or not
+
+
+    check if dependencies are outdated
+
+    pagination--> use library mongoose-paginate from npm
+
+    use bcrypt to hash password
+
+    make all fields in all DTO as readonly
+
