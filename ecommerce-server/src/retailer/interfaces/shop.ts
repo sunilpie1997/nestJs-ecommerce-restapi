@@ -7,8 +7,6 @@ export interface Shop extends Document {
 
   owner_name:String;
 
-  owner_email:String;
-
   shop_type:String;
 
   categories:Map<String,String>,
@@ -30,6 +28,10 @@ export interface Shop extends Document {
   pincode:String;
 
   retailer:String;
+
+  created_date:Date;
+
+  modified_date:Date;
 
 
 

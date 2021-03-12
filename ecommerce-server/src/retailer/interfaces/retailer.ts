@@ -11,6 +11,8 @@ export interface Retailer extends Document {
 
   contact_no:String;
 
-  last_update:Date;
+  created_date:Date;
+
+  modified_date:Date;
 
 }

@@ -98,7 +98,7 @@ export class ShopService {
         /* if category does not exist ,create one */
         var new_category:Category=new this.CategoryModel();
 
-        new_category.name=category_name;
+        new_category.category_name=category_name;
 
         new_category.shop=shop._id;
 
@@ -112,7 +112,7 @@ export class ShopService {
         saved_category_id=saved_category._id;
 
         /* add saved_category 'name' and 'ObjectId' to 'categories' map in 'shop' */
-        shop.categories.set(saved_category.name,saved_category._id);
+        shop.categories.set(saved_category.category_name,saved_category._id);
 
         shop.save();
 

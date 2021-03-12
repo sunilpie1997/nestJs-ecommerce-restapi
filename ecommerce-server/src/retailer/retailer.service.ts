@@ -139,8 +139,6 @@ export class RetailerService {
             const owner_name=retailer.first_name+" "+retailer.last_name;
 
             shop.owner_name=owner_name;
-
-            shop.owner_email=retailer.email;
             
             shop.retailer=retailer._id;
 
@@ -173,7 +171,8 @@ export class RetailerService {
     
                         else
                             {
-                                /* this code is unreachable as nestJs will not allow valus not defined in RetailerQueryEnum
+                                /* this code is unreachable as nestJs will not allow valus not defined
+                                in RetailerQueryEnum (because of global validation scope set currently)
                                 still if in future 'RetailerQueryEnum' has additional search parameter,we can add below functionality */
                                 throw new Error(AdminErrors.SUPPORTED_SEARCH);
                             }

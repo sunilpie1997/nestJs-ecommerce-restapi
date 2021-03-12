@@ -16,6 +16,10 @@ export interface User extends Document{
 
     last_login:Date;
 
+    created_date:Date;
+
+    modified_date:Date;
+
     profile:Profile;
 
 }

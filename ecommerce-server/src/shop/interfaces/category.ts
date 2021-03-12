@@ -3,11 +3,13 @@ import { Document } from 'mongoose';
 /* should include all the values returned by mongodb model */
 export interface Category extends Document {
 
-    name:String;
+    category_name:String;
 
     shop:String;
 
     products: Map<String,String>;
+
+    description: Map<String,String>;
 
     sizes: Map<String,String[]>;
 
