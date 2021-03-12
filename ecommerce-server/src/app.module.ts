@@ -33,11 +33,11 @@ config();
 /* postgres database will be used later */
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'sunilpie',
-      database: 'ecomm-project',
+      host: process.env.RELATIONAL_DATABASE_HOST,
+      port: parseInt(process.env.RELATIONAL_DATABASE_PORT),
+      username: process.env.RELATIONAL_DATABASE_USERNAME,
+      password: process.env.RELATIONAL_DATABASE_PASSWORD,
+      database: process.env.RELATIONAL_DATABASE_NAME,
       /*
       entities: [User,Profile],
       this can be tedious if you have different entities acreoss diff. modules : Tight-coupling */
