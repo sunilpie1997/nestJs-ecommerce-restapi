@@ -1,40 +1,39 @@
 import * as mongoose from 'mongoose';
 import { AddressConstraints } from 'src/shared/constraints/address';
 
-const A=AddressConstraints;
-
 export const profileSchema=new mongoose.Schema({
 
 
     
         contact_no:{
             type:String,
-            maxlength:[A.CONTACTNO_MAXVALUE,A.CONTACTNO_MAXLENGTH],
-            default:null
+            maxlength:[AddressConstraints.CONTACTNO_MAXVALUE,AddressConstraints.CONTACTNO_MAXLENGTH],
+            default:null,
+            required:false
 
         },
     
         area:{
 
             type:String,
-            maxlength:[A.AREA_MAXVALUE,A.AREA_MAXLENGTH],
-            lowercase:true,
+            required:false,
+            maxlength:[AddressConstraints.AREA_MAXVALUE,AddressConstraints.AREA_MAXLENGTH],
             default:null
         },
 
         city:{
 
             type:String,
-            maxlength:[A.CITY_MAXVALUE,A.CITY_MAXLENGTH],
-            lowercase:true,
+            required:false,
+            maxlength:[AddressConstraints.CITY_MAXVALUE,AddressConstraints.CITY_MAXLENGTH],
             default:null
         },
 
         state:{
 
             type:String,
-            maxlength:[A.STATE_MAXVALUE,A.STATE_MAXLENGTH],
-            lowercase:true,
+            required:false,
+            maxlength:[AddressConstraints.STATE_MAXVALUE,AddressConstraints.STATE_MAXLENGTH],
             default:null
         },
 
@@ -42,7 +41,8 @@ export const profileSchema=new mongoose.Schema({
 
 
             type:String,
-            maxlength:[A.PINCODE_MAXVALUE,A.PINCODE_MAXLENGTH],
+            required:false,
+            maxlength:[AddressConstraints.PINCODE_MAXVALUE,AddressConstraints.PINCODE_MAXLENGTH],
             default:null
             },
 
@@ -60,6 +60,7 @@ export const profileSchema=new mongoose.Schema({
 
             type:String,
             default:null,
+            required:false,
             maxlength:[200,"profile image link max length should be 200"]
         }
 

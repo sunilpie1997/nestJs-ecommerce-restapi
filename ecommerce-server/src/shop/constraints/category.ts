@@ -1,7 +1,7 @@
 export enum CategoryConstraints{
 
-    NAME_MAXVALUE=50,
-    NAME_MAXLENGTH="Max supported length of category name is 50",
+    CATEGORY_NAME_MAXVALUE=50,
+    CATEGORY_NAME_MAXLENGTH="Max supported length of category name is 50",
 
     MAX_PRODUCTS_PER_CATEGORY_VALUE=20
     /*

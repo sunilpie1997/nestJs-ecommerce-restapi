@@ -2,15 +2,13 @@ import * as mongoose from 'mongoose';
 import {RetailerConstraints} from 'src/retailer/constraints/retailer';
 import { AddressConstraints } from 'src/shared/constraints/address';
 
-const R=RetailerConstraints;
-const A=AddressConstraints;
 
 export const RetailerSchema = new mongoose.Schema({
 
     first_name: {
         
         type:String,
-        maxlength:[R.FIRSTNAME_MAXVALUE,R.FIRSTNAME_MAXLENGTH],
+        maxlength:[RetailerConstraints.FIRSTNAME_MAXVALUE,RetailerConstraints.FIRSTNAME_MAXLENGTH],
         required:true,
 
         },
@@ -18,14 +16,16 @@ export const RetailerSchema = new mongoose.Schema({
     last_name:{
 
         type:String,
-        maxlength:[R.LASTNAME_MAXVALUE,R.LASTNAME_MAXLENGTH],
+        maxlength:[RetailerConstraints.LASTNAME_MAXVALUE,RetailerConstraints.LASTNAME_MAXLENGTH],
+        required:false,
+        default:null
 
         },
 
     email: {
 
         type:String,
-        max_length:[R.EMAIL_MAXVALUE,R.EMAIL_MAXLENGTH],
+        max_length:[RetailerConstraints.EMAIL_MAXVALUE,RetailerConstraints.EMAIL_MAXLENGTH],
         unique:true,
         index:{unique:true},
         required:true,
@@ -37,18 +37,25 @@ export const RetailerSchema = new mongoose.Schema({
     contact_no: {
 
         type:String,
-        maxlength:[A.CONTACTNO_MAXVALUE,A.CONTACTNO_MAXLENGTH],
+        maxlength:[AddressConstraints.CONTACTNO_MAXVALUE,AddressConstraints.CONTACTNO_MAXLENGTH],
         unique:true,
         index:{unique:true},
         required:true,
         },
 
 
-    last_update:{
+    created_date:{
 
         type:Date,
-        default:null
+        default:Date.now
+        
+        },
 
+    modified_date:{
+
+        type:Date,
+        default:Date.now
+        
         },
 
 

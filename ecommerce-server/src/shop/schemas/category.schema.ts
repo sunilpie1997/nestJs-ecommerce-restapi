@@ -1,17 +1,15 @@
 import * as mongoose from 'mongoose';
 import { CategoryConstraints } from 'src/shop/constraints/category';
 
-const C=CategoryConstraints;
-
 export const CategorySchema=new mongoose.Schema({
 
 
-    name:{
+    category_name:{
 
         type:String,
         required:true,
         index:true,
-        maxlength:[C.NAME_MAXVALUE,C.NAME_MAXLENGTH],
+        maxlength:[CategoryConstraints.CATEGORY_NAME_MAXVALUE,CategoryConstraints.CATEGORY_NAME_MAXLENGTH],
         lowercase:true,
 
         },
@@ -33,7 +31,12 @@ export const CategorySchema=new mongoose.Schema({
         default:new Map<String,String>(),
         },
 
+    description:{
 
+        type:Map,
+        of:String,
+        default:new Map<String,String>(),
+    },
 
     sizes:{
 

@@ -2,30 +2,20 @@ import * as mongoose from 'mongoose';
 import { ShopConstraints } from 'src/retailer/constraints/shop';
 import { AddressConstraints } from 'src/shared/constraints/address';
 
-const S=ShopConstraints;
-const A=AddressConstraints;
 
 export const ShopSchema = new mongoose.Schema({
   
     shop_name:{
         type:String,
-        maxlength:[S.SHOPNAME_MAXVALUE,S.SHOPNAME_MAXLENGTH],
+        maxlength:[ShopConstraints.SHOPNAME_MAXVALUE,ShopConstraints.SHOPNAME_MAXLENGTH],
         required:true,
         index:true,
         },
 
-    owner_email:{
-
-        type:String,
-        required:true,
-        index:true,
-        lowercase:true,
-    },
-
     owner_name:{
 
         type:String,
-        maxlength:[S.OWNERNAME_MAXVALUE,S.OWNERNAME_MAXLENGTH],
+        maxlength:[ShopConstraints.OWNERNAME_MAXVALUE,ShopConstraints.OWNERNAME_MAXLENGTH],
         required:true,
         },
 
@@ -33,7 +23,7 @@ export const ShopSchema = new mongoose.Schema({
 
 
         type:String,
-        maxlength:[S.SHOPTYPE_MAXVALUE,S.SHOPTYPE_MAXLENGTH],
+        maxlength:[ShopConstraints.SHOPTYPE_MAXVALUE,ShopConstraints.SHOPTYPE_MAXLENGTH],
         required:true,
         index:true,
         lowercase:true,
@@ -45,7 +35,7 @@ export const ShopSchema = new mongoose.Schema({
         shop_email:{
 
         type:String,
-        maxlength:[S.EMAIL_MAXVALUE,S.EMAIL_MAXLENGTH],
+        maxlength:[ShopConstraints.EMAIL_MAXVALUE,ShopConstraints.EMAIL_MAXLENGTH],
         required:true,
         lowercase:true,
 
@@ -54,7 +44,7 @@ export const ShopSchema = new mongoose.Schema({
         area:{
 
             type:String,
-            maxlength:[A.AREA_MAXVALUE,A.AREA_MAXLENGTH],
+            maxlength:[AddressConstraints.AREA_MAXVALUE,AddressConstraints.AREA_MAXLENGTH],
             required:true,
             lowercase:true,
         },
@@ -62,7 +52,7 @@ export const ShopSchema = new mongoose.Schema({
         city:{
 
             type:String,
-            maxlength:[A.CITY_MAXVALUE,A.CITY_MAXLENGTH],
+            maxlength:[AddressConstraints.CITY_MAXVALUE,AddressConstraints.CITY_MAXLENGTH],
             required:true,
             index:true,
             lowercase:true,
@@ -71,7 +61,7 @@ export const ShopSchema = new mongoose.Schema({
         state:{
 
             type:String,
-            maxlength:[A.STATE_MAXVALUE,A.STATE_MAXLENGTH],
+            maxlength:[AddressConstraints.STATE_MAXVALUE,AddressConstraints.STATE_MAXLENGTH],
             required:true,
             lowercase:true,
         },
@@ -80,7 +70,7 @@ export const ShopSchema = new mongoose.Schema({
 
 
             type:String,
-            maxlength:[A.PINCODE_MAXVALUE,A.PINCODE_MAXLENGTH],
+            maxlength:[AddressConstraints.PINCODE_MAXVALUE,AddressConstraints.PINCODE_MAXLENGTH],
             required:true,
             index:true,
             },
@@ -88,7 +78,8 @@ export const ShopSchema = new mongoose.Schema({
   
         contact_no:{
             type:String,
-            maxlength:[A.CONTACTNO_MAXVALUE,A.CONTACTNO_MAXLENGTH]
+            maxlength:[AddressConstraints.CONTACTNO_MAXVALUE,AddressConstraints.CONTACTNO_MAXLENGTH],
+            required:true
 
         },
 
@@ -123,12 +114,21 @@ export const ShopSchema = new mongoose.Schema({
             default:new Map<String,String>(),
 
 
-            },
+        },
         
-            date_added:{
-                type:Date,
-                required:true,
-                default:Date.now()
-            }
+        created_date:{
+
+            type:Date,
+            default:Date.now
+            
+        },
+    
+        modified_date:{
+    
+            type:Date,
+            default:Date.now
+            
+        },
+
     
 });

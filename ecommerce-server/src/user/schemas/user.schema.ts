@@ -1,10 +1,7 @@
 import * as mongoose from 'mongoose';
 import { UserConstraints } from 'src/user/constraints/user';
-import { AddressConstraints } from 'src/shared/constraints/address';
 import { profileSchema } from 'src/user/schemas/profile.schema';
 
-const U=UserConstraints;
-const A=AddressConstraints;
 
 export const UserSchema=new mongoose.Schema({
 
@@ -15,7 +12,7 @@ export const UserSchema=new mongoose.Schema({
         required:true,
         index:{unique:true},
         unique:true,
-        maxlength:[U.EMAIL_MAXVALUE,U.EMAIL_MAXLENGTH],
+        maxlength:[UserConstraints.EMAIL_MAXVALUE,UserConstraints.EMAIL_MAXLENGTH],
         lowercase:true
 
         },
@@ -24,38 +21,54 @@ export const UserSchema=new mongoose.Schema({
 
             type:String,
             required:false,
-            maxlength:[U.PASSWORD_MAXVALUE,U.PASSWORD_MAXLENGTH],
+            maxlength:[UserConstraints.PASSWORD_MAXVALUE,UserConstraints.PASSWORD_MAXLENGTH],
         
             },
 
         first_name:{
 
             type:String,
-            maxlength:[U.FIRSTNAME_MAXVALUE,U.FIRSTNAME_MAXLENGTH],
-            default:null
+            required:false,
+            maxlength:[UserConstraints.FIRSTNAME_MAXVALUE,UserConstraints.FIRSTNAME_MAXLENGTH],
+            default:null,
+            lowercase:true
             
             },
 
         last_name:{
 
             type:String,
-            maxlength:[U.LASTNAME_MAXVALUE,U.LASTNAME_MAXLENGTH],
-            default:null
+            required:false,
+            maxlength:[UserConstraints.LASTNAME_MAXVALUE,UserConstraints.LASTNAME_MAXLENGTH],
+            default:null,
+            lowercase:true
                 
             },
 
         last_login:{
 
             type:Date,
+            required:false,
             default:null
             
-                
             },
 
         is_admin: {
 
             type:Boolean,
             default:false
+        },
+
+        created_date:{
+
+            type:Date,
+            default:Date.now
+        },
+
+        modified_date:{
+
+            type:Date,
+            default:Date.now
         },
         
         profile:{
