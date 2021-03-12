@@ -61,7 +61,6 @@ export const profileSchema=new mongoose.Schema({
             type:String,
             default:null,
             required:false,
-            maxlength:[200,"profile image link max length should be 200"]
         }
 
 
