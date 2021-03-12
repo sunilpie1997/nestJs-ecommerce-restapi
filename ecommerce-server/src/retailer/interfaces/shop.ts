@@ -33,6 +33,8 @@ export interface Shop extends Document {
 
   modified_date:Date;
 
+  image:String;
+
 
 
   
