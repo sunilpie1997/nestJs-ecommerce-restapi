@@ -69,7 +69,7 @@ export class AuthController {
     @UseGuards(AuthenticatedGuard)
     @Get('change_password/')
     @Render('password_form')
-    async password_change_view(
+    async password_change_form(
         @Request() req
         
     )
@@ -97,11 +97,12 @@ export class AuthController {
 
 
     /* route to change user password */
+    @UseGuards(AuthenticatedGuard)
     @Post('change_password/')
     @Render('password')
     async change_password(
         @Request() req,
-        @Body() Form:PasswordChangeDto
+        @Body() PasswordForm:PasswordChangeDto
     )
     {
         let email:String=null,name:String=null,message:String=null,error:Boolean=false;
@@ -112,16 +113,9 @@ export class AuthController {
         email=userDetails.email;
         name=userDetails.first_name+" "+userDetails.last_name;
         
+    
+        message=await this.authService.changePassword(email,PasswordForm.password);
         
-        if(Form.password.length<8 && Form.password.length>50)
-        {   
-            message="password length should be between 8 to 50 chars";
-            error=true;
-        }
-        else
-        {
-            message=await this.authService.changePassword(email,Form.password);
-        }
        
     }
 
